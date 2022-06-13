@@ -68,5 +68,8 @@ This is a simple microservice for generating tokens and checking their validity.
      }
 
 
+### Upload docker image
+
+     - docker pull skiphead/web-token-server:latest
 
 Stable work on GoLang 1.8.3
