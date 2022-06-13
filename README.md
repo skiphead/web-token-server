@@ -1,6 +1,7 @@
 #How to build and run?
 
 ####cd project folder:
+
     - Edited config file ./config/server.json (listen port, expired live token (sec), TLS on/off, pki cert and key files )
     
     - go build ./cmd/main.go
