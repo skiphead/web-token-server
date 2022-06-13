@@ -1,4 +1,4 @@
-#How to build and run?
+# How to build and run?
 
 ####cd project folder:
 
