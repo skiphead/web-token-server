@@ -1,0 +1,1 @@
+docker build -t web-token-server:latest .

@@ -21,7 +21,7 @@ func RandStringRunes(n int) string {
 
 func main() {
 	for j := 0; j < 50000000000; j++ {
-		for i := 0; i < 90; i++ {
+		for i := 0; i < 80; i++ {
 			go test(j * 90)
 			//fmt.Println(i)
 		}
