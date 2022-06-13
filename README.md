@@ -4,7 +4,7 @@ This is a simple microservice for generating tokens and checking their validity.
 
 # How to build and run?
 
-####cd project folder:
+#### cd project folder:
 
     - Edited config file ./config/server.json 
     (listen port, expired live token (sec), TLS on/off, pki cert and key files )
@@ -17,7 +17,7 @@ This is a simple microservice for generating tokens and checking their validity.
 
 # How to use?
 
-####New generate token
+#### New generate token
 
 
   - Request POST: /new
