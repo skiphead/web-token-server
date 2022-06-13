@@ -1,3 +1,7 @@
+# About the Web-token-server
+
+This is a simple microservice for generating tokens and checking their validity.
+
 # How to build and run?
 
 ####cd project folder:
