@@ -1,0 +1,7 @@
+{
+  "port": "8080",
+  "expired_at": 600,
+  "tls": false,
+  "server_crt": "",
+  "server_key": ""
+}

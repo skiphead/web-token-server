@@ -1,0 +1,5 @@
+1. Get username
+2. Generate a new token
+3. Associate a new token with the received name and the current time
+4. Put user data into data array
+5. Check token expiration time
