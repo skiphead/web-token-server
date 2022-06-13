@@ -1,9 +1,12 @@
 #How to build and run?
 
-####cd project folder
+####cd project folder:
     - Edited config file ./config/server.json (listen port, expired live token (sec), TLS on/off, pki cert and key files )
+    
     - go build ./cmd/main.go
+     
     - main(windows main.exe) --config-path="/path-config/server.json"
+     
     - default settings http://127.0.0.1:8080, expireted  live after 600 sec
 
 # How to use?
