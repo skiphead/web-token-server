@@ -6,12 +6,12 @@ import (
 	"log"
 )
 
-func NewToken() (token string) {
+func UUIDV4() (token string) {
 
 	b := make([]byte, 16)
 	_, err := rand.Read(b)
 	if err != nil {
-		log.Println("Error generate token: ", err)
+		log.Println("Error generate uuid: ", err)
 		return
 	}
 
