@@ -13,7 +13,7 @@ func newToken(name, host string) string {
 		Host:      host,
 		ExpiresAt: time.Now().Add(time.Duration(conf.ExpiredAt) * time.Second),
 		Name:      name,
-		Token:     generator.NewToken(),
+		Token:     generator.UUIDV4(),
 	}
 	storeTokens = append(storeTokens, token)
 	return token.Token
