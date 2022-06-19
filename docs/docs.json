@@ -1,0 +1,63 @@
+{
+  "title": "Web-Token-API",
+  "description": "Simple generate token for auth",
+  "scheme": "https",
+  "function": [
+    {
+      "description": "Create new token",
+      "method": "post",
+      "url": "/new",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"name\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"token\":\"string\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
+    },
+    {
+      "description": "Check valid token",
+      "method": "post",
+      "url": "/check",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"token\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"valid\":\"bool\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
+    },
+    {
+      "description": "Info token",
+      "method": "post",
+      "url": "/info",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"token\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"token\":\"string\", \"name\":\"string\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
+    }
+  ],
+  "version": "0.2.1",
+  "date": "2022"
+}

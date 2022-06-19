@@ -6,16 +6,18 @@ This is a simple microservice for generating tokens and checking their validity.
 
 #### cd project folder:
 
-    - Edited config file ./config/server.json 
+    Edited config file ./config/server.json 
     (listen port, expired live token (sec), TLS on/off, pki cert and key files )
     
-    - go build ./cmd/main.go
+    go build ./cmd/main.go
      
-    - main(windows main.exe) --config-path="/path-config/server.json"
+    main(windows main.exe) --config-path="/path-config/server.json"
      
-    - default settings http://127.0.0.1:8080, expireted  live after 600 sec
+    default settings http://127.0.0.1:8080, expireted  live after 600 sec
 
 # How to use?
+
+    Documentation http://localhost:8080/docs
 
 #### New generate token
 
@@ -63,13 +65,13 @@ This is a simple microservice for generating tokens and checking their validity.
   - Response POST:
 
      {
-       "token": string
+       "token": string,
        "name": string
      }
 
 
 ### Upload docker image
 
-     - docker pull skiphead/web-token-server:latest
+     docker pull skiphead/web-token-server:latest
 
 Stable work on GoLang 1.8.3

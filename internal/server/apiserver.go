@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"web-token-server/docs"
 	"web-token-server/pkg/generator"
 )
 
@@ -26,11 +27,13 @@ func Run() {
 
 	// Mux router
 	mux := http.NewServeMux()
-
+	docs.Include(mux)
 	mux.HandleFunc("/new", NewToken)
 	mux.HandleFunc("/info", TokenInfo)
 	mux.HandleFunc("/check", ChekToken)
 	mux.HandleFunc("/version", Version)
+
+	//mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./docs/assets/"))))
 
 	//Configuration server
 	server := &http.Server{

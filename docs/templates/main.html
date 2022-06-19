@@ -1,0 +1,35 @@
+{{ define "Main" }}
+
+    {{ template "Header" }}
+    {{ template "Menu" }}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Documentation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="Documentation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <div>
+        <div class="bg-light p-5 rounded">
+            <div class="col-sm-8 mx-auto">
+                <H1>{{ .Title }}</H1>
+                <H4>{{ .Description }}</H4>
+            </div>
+        </div>
+        <div class="bg-light p-5 rounded">
+            <div class="col-sm-8 mx-auto">
+                {{ template "Function" .Function }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {{ template "Footer" . }}
+
+{{ end }}
