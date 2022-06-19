@@ -1,7 +1,11 @@
 package main
 
-import "web-token-server/internal/server"
+import (
+	"runtime"
+	"web-token-server/internal/server"
+)
 
 func main() {
+	runtime.GOMAXPROCS(4)
 	Server.Run()
 }

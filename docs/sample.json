@@ -1,0 +1,20 @@
+{
+  "title": "title",
+  "description": "description",
+  "scheme": "https",
+  "function": {
+    "description": "description",
+    "method": "method",
+    "url": "url",
+    "security": false,
+    "parameters": {
+      "name": "name",
+      "body": "body",
+      "responses": "application/json",
+      "code": {
+          "200": "ok",
+          "404": "page not fount"
+        }
+    }
+  }
+}
