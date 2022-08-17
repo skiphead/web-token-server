@@ -56,6 +56,60 @@
           }
         }
       }
+    },
+    {
+      "description": "Test",
+      "method": "delete",
+      "url": "/info",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"token\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"token\":\"string\", \"name\":\"string\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
+    },
+    {
+      "description": "Test get",
+      "method": "get",
+      "url": "/info",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"token\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"token\":\"string\", \n \"name\":\"string\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
+    },
+    {
+      "description": "Test put",
+      "method": "put",
+      "url": "/info",
+      "security": false,
+      "parameters": {
+        "name": "name",
+        "body": "{\n\t\"token\":\"string\"`\n}",
+        "responses": {
+          "content_type": "application/json",
+          "body": "{\n\t\"token\":\"string\", \"name\":\"string\"`\n}",
+          "code": {
+            "ok": "200",
+            "page_not_found": "404"
+          }
+        }
+      }
     }
   ],
   "version": "0.2.1",

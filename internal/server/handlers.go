@@ -16,20 +16,21 @@ func NewToken(w http.ResponseWriter, r *http.Request) {
 			log.Println("New token request", errDecoder)
 		}
 		sessionToken := TokenStruct{
-			Token: newToken(name.Name, r.Host),
+			SessionToken: NewSessionToken(name.Name, r.Host),
+			RefreshToken: NewRefreshToken(name.Name),
 		}
 		w.Header().Add("Content-Type", "application/json")
 		err := json.NewEncoder(w).Encode(sessionToken)
 		if err != nil {
-			log.Println("Handle function newToken token encoder:", err)
+			log.Println("Handle function NewSessionToken token encoder:", err)
 		}
 	} else if r.Method == "GET" {
 		w.WriteHeader(400)
 	}
 }
 
-//ChekToken Handler for check on valid token
-func ChekToken(w http.ResponseWriter, r *http.Request) {
+//CheckToken Handler for check on valid token
+func CheckToken(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		token := TokenStruct{}
 		decoder := json.NewDecoder(r.Body)
@@ -37,11 +38,11 @@ func ChekToken(w http.ResponseWriter, r *http.Request) {
 		if errDecoder != nil {
 			log.Println("New token request", errDecoder)
 		}
-		sessionToken := ValidateStruct{Valid: isExpired(token.Token)}
+		sessionToken := ValidateStruct{Valid: isExpired(token.SessionToken)}
 		w.Header().Add("Content-Type", "application/json")
 		err := json.NewEncoder(w).Encode(sessionToken)
 		if err != nil {
-			log.Println("Handle function ChekToken token encoder:", err)
+			log.Println("Handle function CheckToken token encoder:", err)
 		}
 	} else if r.Method == "GET" {
 		w.WriteHeader(400)
@@ -59,13 +60,13 @@ func TokenInfo(w http.ResponseWriter, r *http.Request) {
 		}
 
 		tokenInfo := TokenInfoStruct{}
-		for _, t := range storeTokens {
-			if t.Token == token.Token {
-				tokenInfo.Token = token.Token
+		for _, t := range SessionTokenStorage {
+			if t.Token == token.SessionToken {
+				tokenInfo.SessionToken = token.SessionToken
 				tokenInfo.Name = t.Name
 			}
 		}
-		tokenInfo.Token = token.Token
+		tokenInfo.SessionToken = token.SessionToken
 		if tokenInfo.Name == "" {
 			tokenInfo.Name = "Not found"
 		}

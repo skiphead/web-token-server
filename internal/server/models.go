@@ -3,7 +3,8 @@ package Server
 import "time"
 
 type TokenStruct struct {
-	Token string `json:"token"`
+	SessionToken string `json:"session_token"`
+	RefreshToken string `json:"refresh_token"`
 }
 
 type TokenName struct {
@@ -19,9 +20,15 @@ type ValidateStruct struct {
 	Valid bool `json:"valid"`
 }
 
-type Store struct {
+type SessionTokenStorageStruct struct {
 	Host      string
 	Name      string
 	Token     string
 	ExpiresAt time.Time
+}
+
+type RefreshTokenStorageStruct struct {
+	NameSessionToken string    `json:"name_session_token,omitempty"`
+	RefreshToken     string    `json:"refresh_token,omitempty"`
+	ExpiresAt        time.Time `json:"expires_at"`
 }

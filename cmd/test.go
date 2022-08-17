@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"sync"
 	"time"
 	Server "web-token-server/internal/server"
 	"web-token-server/pkg/generator"
@@ -10,15 +11,23 @@ import (
 )
 
 func main() {
+	var wg sync.WaitGroup
 	for j := 0; j < 50000000000; j++ {
+		wg.Add(1)
 		for i := 0; i < 100; i++ {
-			go test(j * 90)
+			wg.Add(1)
+			go func(j int) {
+				test(j * 900)
+			}(j)
+			wg.Done()
+
 			//fmt.Println(i)
 		}
-		fmt.Println(j * 100)
+		wg.Done()
+		//fmt.Println(j*100, "LEN:", len(Server.SessionTokenStorage), "CAP:", cap(Server.SessionTokenStorage))
 		time.Sleep(1 * time.Second)
 	}
-
+	wg.Wait()
 }
 
 func test(count int) {
@@ -30,11 +39,11 @@ func test(count int) {
 	_ = json.Unmarshal(newToken, &token)
 	//fmt.Println("Accept", token.Token)
 	checkToken := Server.ValidateStruct{}
-	valid := testing.TestTokenCheckInfo("http://127.0.0.1:8080/check", token.Token, "POST")
+	valid := testing.TestTokenCheckInfo("http://127.0.0.1:8080/check", token.SessionToken, "POST")
 	_ = json.Unmarshal(valid, &checkToken)
 	if checkToken.Valid {
 		info := Server.TokenInfoStruct{}
-		tokenInfo := testing.TestTokenCheckInfo("http://127.0.0.1:8080/info", token.Token, "POST")
+		tokenInfo := testing.TestTokenCheckInfo("http://127.0.0.1:8080/info", token.SessionToken, "POST")
 		_ = json.Unmarshal(tokenInfo, &info)
 		if name == info.Name {
 			fmt.Println("Test", count, "OK")

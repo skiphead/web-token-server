@@ -1,6 +1,6 @@
 {
   "port": "8080",
-  "expired_at": 600,
+  "expired_at": 10,
   "tls": false,
   "server_crt": "",
   "server_key": ""

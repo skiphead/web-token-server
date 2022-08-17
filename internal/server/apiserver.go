@@ -5,32 +5,19 @@ import (
 	"net/http"
 	"time"
 	"web-token-server/docs"
-	"web-token-server/pkg/generator"
 )
-
-//newToken generate new token
-func newToken(name, host string) string {
-	token := Store{
-		Host:      host,
-		ExpiresAt: time.Now().Add(time.Duration(conf.ExpiredAt) * time.Second),
-		Name:      name,
-		Token:     generator.UUIDV4(),
-	}
-	storeTokens = append(storeTokens, token)
-	return token.Token
-}
 
 //Run running server
 func Run() {
 	// Go-routine for finding expired token in tokens array and remove
-	go tokenStore()
+	tokenStore()
 
 	// Mux router
 	mux := http.NewServeMux()
 	docs.Include(mux)
 	mux.HandleFunc("/new", NewToken)
 	mux.HandleFunc("/info", TokenInfo)
-	mux.HandleFunc("/check", ChekToken)
+	mux.HandleFunc("/check", CheckToken)
 	mux.HandleFunc("/version", Version)
 
 	//mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./docs/assets/"))))
